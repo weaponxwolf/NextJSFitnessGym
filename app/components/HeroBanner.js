@@ -33,7 +33,7 @@ export default function HeroBanner({ searchTerm, setSearchTerm, onSearch }) {
         
         <div className="mb-8 h-16 flex items-center justify-center">
           <p className="text-xl md:text-2xl italic font-light transition-opacity duration-500">
-            "{fitnessQuotes[currentQuote]}"
+            `&quot;`{fitnessQuotes[currentQuote]}`&quot;`
           </p>
         </div>
 
