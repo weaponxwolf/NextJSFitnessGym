@@ -129,23 +129,21 @@ export default function Home() {
   const [selectedTarget, setSelectedTarget] = useState('');
 
   // RapidAPI configuration
-  const rapidApiKey = process.env.NEXT_PUBLIC_RAPIDAPI_KEY || '988f8b011fmshe916d9527c05b3fp176d33jsn15d3078aa8a4';
+  const rapidApiKey = 'd75a09ed90mshdd53e2ad02a1891p1f4660jsn079cb7616fbd';
   const rapidApiHost = 'exercisedb.p.rapidapi.com';
 
   const fetchExercises = async (endpoint = 'exercises', limit = 12) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://exercisedb.p.rapidapi.com/exercises?limit=10&offset=0`, {
+      const response = await fetch(`https://${rapidApiHost}/${endpoint}?limit=10&offset=0`, {
         method: 'GET',
         headers: {
-          'x-rapidapi-key': '988f8b011fmshe916d9527c05b3fp176d33jsn15d3078aa8a4',
-          'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
+          'x-rapidapi-key': rapidApiKey,
+          'x-rapidapi-host': rapidApiHost,
         },
       });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+
+      console.log(response);
       
       const data = await response.json();
       setExercises(data);
