@@ -14,19 +14,11 @@ export default function Home() {
   const [selectedBodyPart, setSelectedBodyPart] = useState('');
   const [selectedTarget, setSelectedTarget] = useState('');
 
-  // RapidAPI configuration
-  const rapidApiKey = 'd75a09ed90mshdd53e2ad02a1891p1f4660jsn079cb7616fbd';
-  const rapidApiHost = 'exercisedb.p.rapidapi.com';
-
   const fetchExercises = async (endpoint = 'exercises', limit = 12) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://${rapidApiHost}/${endpoint}?limit=10&offset=0`, {
+      const response = await fetch(`http://localhost:4000/api/${endpoint}?limit=10&offset=0`, {
         method: 'GET',
-        headers: {
-          'x-rapidapi-key': rapidApiKey,
-          'x-rapidapi-host': rapidApiHost,
-        },
       });
 
       console.log(response);
@@ -46,12 +38,8 @@ export default function Home() {
     
     setLoading(true);
     try {
-      const response = await fetch(`https://${rapidApiHost}/exercises/name/${searchTerm.toLowerCase()}?limit=10`, {
+      const response = await fetch(`http://localhost:4000/api/exercises/name/${searchTerm.toLowerCase()}?limit=10`, {
         method: 'GET',
-        headers: {
-          'x-rapidapi-key': '988f8b011fmshe916d9527c05b3fp176d33jsn15d3078aa8a4',
-          'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
-        },
       });
       
       const data = await response.json();
