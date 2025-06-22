@@ -11,7 +11,6 @@ router.get('/',(request: Request,response: Response)=>{
     const exercises:Exercise[]=JSON.parse(data);
 
     if(request.query.limit!=undefined&&request.query.limit!=""){
-        console.log(request.query.limit);
         responseData=exercises.slice(0,parseInt(request.query.limit.toString()));
     }
         
@@ -60,8 +59,6 @@ router.get('/name/:name',(request: Request,response: Response)=>{
     let name=request.params.name;
     
     responseData=exercises.filter(exercise=>exercise.name.toLowerCase().includes(name.toLowerCase()));
-  
-    
 
     if(request.query.limit!=undefined&&request.query.limit!=""){
         responseData=responseData.slice(0,parseInt(request.query.limit.toString()));
